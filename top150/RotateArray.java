@@ -47,12 +47,30 @@ class RotateArray {
 		In this solution, we are using reverse array approach to solve this problem.
 	*/
 	int [] rotateUsingReversArray(int [] nums, int k){
-		nums = revers(nums, 0, nums.length -1);
+		
+		if(nums.length == 1)
+            return;
+
+        k = getRotation(nums.length , k);
+
+        nums = revers(nums, 0, nums.length -1);
         nums = revers(nums, 0, k-1);
         nums = revers(nums, k, nums.length - 1);
 
         System.out.println(nums);
 	}
+	
+	int getRotation(int size, int k){
+        if(size > k){
+            return k;
+        }
+
+        while(k >= size){
+            k = k % size;
+        }
+
+        return k;
+    }
 
     int [] revers(int [] nums, int i, int j){
         int temp = 0;
