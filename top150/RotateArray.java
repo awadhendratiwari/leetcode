@@ -48,10 +48,10 @@ class RotateArray {
 	*/
 	int [] rotateUsingReversArray(int [] nums, int k){
 		
-		if(nums.length == 1)
-            return;
+		k = k % nums.length;
 
-        k = getRotation(nums.length , k);
+        if ( k == 0)
+            return;
 
         nums = revers(nums, 0, nums.length -1);
         nums = revers(nums, 0, k-1);
@@ -59,18 +59,6 @@ class RotateArray {
 
         System.out.println(nums);
 	}
-	
-	int getRotation(int size, int k){
-        if(size > k){
-            return k;
-        }
-
-        while(k >= size){
-            k = k % size;
-        }
-
-        return k;
-    }
 
     int [] revers(int [] nums, int i, int j){
         int temp = 0;
